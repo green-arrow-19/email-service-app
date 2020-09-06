@@ -27,8 +27,9 @@ public class EmailController {
     public ResponseEntity<?> sendMail(@RequestParam(value = "to") String to,
             @RequestParam(value = "subject") String subject, @RequestParam(value = "content") String content)
     throws IOException, MessagingException {
-        
+        log.info("Send email request --> to : {}, subject : {}, content : {}", to, subject, content);
         emailService.sendMail(to, subject, content);
+        log.info("Email sent successfully to : {}, subject : {}", to, content);
         return ResponseEntity.ok("SUCCESS");
     }
 }
