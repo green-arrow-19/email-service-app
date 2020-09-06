@@ -1,0 +1,19 @@
+server:
+  port: 8040
+
+spring:
+  application:
+    name: "email-service-app"
+
+
+#set emailId and password --> enable less secure apps on your email
+email.service:
+    props:
+      username: "<email>"
+      password: "<password>"
+      smtp_auth: "true"
+      starttls_enabled: "true"
+      host: "smtp.gmail.com"
+      port: "587"
+
+
