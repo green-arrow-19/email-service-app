@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EmailController {
     
     @Autowired
-    EmailService emailService;
+    private EmailService emailService;
     
     @GetMapping("/email/send")
     public ResponseEntity<?> sendMail(@RequestParam(value = "to") String to,
