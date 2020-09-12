@@ -31,14 +31,14 @@ public class EmailConfig {
     private String username;
     
     public Session getSession() {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", props.getProperty("smtp_auth"));
-        props.put("mail.smtp.starttls.enable", props.getProperty("starttls_enabled"));
-        props.put("mail.smtp.host", props.getProperty("host"));
-        props.put("mail.smtp.port", props.getProperty("port"));
-        return Session.getInstance(props, new javax.mail.Authenticator() {
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", this.props.get("smtp_auth"));
+        properties.put("mail.smtp.starttls.enable", this.props.get("starttls_enabled"));
+        properties.put("mail.smtp.host", this.props.get("host"));
+        properties.put("mail.smtp.port", this.props.get("port"));
+        return Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(props.getProperty("username"), props.getProperty("password"));
+                return new PasswordAuthentication(props.get("username"), props.get("password"));
             }
         });
     }
